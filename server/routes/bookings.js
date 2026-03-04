@@ -5,9 +5,6 @@ import { protect, authorize } from '../middleware/auth.js'
 
 const router = express.Router()
 
-// @route   POST /api/bookings
-// @desc    Create a booking
-// @access  Private
 router.post('/', protect, async (req, res) => {
     try {
         const { car, pickupLocation, returnLocation, pickupDate, returnDate, extras, customerInfo, pricing, promoCode } = req.body
@@ -47,9 +44,6 @@ router.post('/', protect, async (req, res) => {
     }
 })
 
-// @route   GET /api/bookings
-// @desc    Get user bookings (or all for admin)
-// @access  Private
 router.get('/', protect, async (req, res) => {
     try {
         let query = {}
@@ -79,9 +73,6 @@ router.get('/', protect, async (req, res) => {
     }
 })
 
-// @route   GET /api/bookings/:id
-// @desc    Get single booking
-// @access  Private
 router.get('/:id', protect, async (req, res) => {
     try {
         const booking = await Booking.findById(req.params.id)
@@ -104,9 +95,6 @@ router.get('/:id', protect, async (req, res) => {
     }
 })
 
-// @route   PUT /api/bookings/:id/cancel
-// @desc    Cancel a booking
-// @access  Private
 router.put('/:id/cancel', protect, async (req, res) => {
     try {
         const booking = await Booking.findById(req.params.id)
@@ -141,9 +129,6 @@ router.put('/:id/cancel', protect, async (req, res) => {
     }
 })
 
-// @route   PUT /api/bookings/:id/status
-// @desc    Update booking status
-// @access  Private (seller owner, admin)
 router.put('/:id/status', protect, authorize('seller', 'admin'), async (req, res) => {
     try {
         const { status } = req.body

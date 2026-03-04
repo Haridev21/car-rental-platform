@@ -23,7 +23,6 @@ const seedData = async () => {
         await Location.deleteMany()
         console.log('Cleared existing data')
 
-        // Create admin user
         const admin = await User.create({
             name: 'Admin User',
             email: 'admin@driveease.com',
@@ -32,7 +31,6 @@ const seedData = async () => {
         })
         console.log('Created admin user')
 
-        // Create seller
         const seller = await User.create({
             name: 'John Seller',
             email: 'seller@driveease.com',
@@ -49,7 +47,6 @@ const seedData = async () => {
         })
         console.log('Created users')
 
-        // Create locations
         const locationsData = [
             { name: 'JFK Airport', address: 'JFK International Airport, Queens, NY', city: 'New York', isAirport: true },
             { name: 'LAX Airport', address: 'Los Angeles International Airport, CA', city: 'Los Angeles', isAirport: true },
@@ -64,7 +61,6 @@ const seedData = async () => {
         const locations = await Location.insertMany(locationsData)
         console.log('Created locations')
 
-        // Create cars
         const carsData = [
             { name: 'Toyota Camry', brand: 'Toyota', type: 'Midsize', price: 45, fuel: 'Petrol', transmission: 'Automatic', seats: 5, luggage: 3, doors: 4, year: 2023, features: ['Bluetooth', 'Cruise Control', 'Backup Camera'], image: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=800', popular: true },
             { name: 'Honda Civic', brand: 'Honda', type: 'Compact', price: 38, fuel: 'Petrol', transmission: 'Automatic', seats: 5, luggage: 2, doors: 4, year: 2023, features: ['Apple CarPlay', 'Lane Assist'], image: 'https://images.unsplash.com/photo-1619682817481-e994891cd1f5?w=800' },

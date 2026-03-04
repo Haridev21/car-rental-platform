@@ -100,7 +100,6 @@ const carSchema = new mongoose.Schema({
     }
 })
 
-// Index for search and filters
 carSchema.index({ name: 'text', brand: 'text' })
 carSchema.index({ type: 1, brand: 1, price: 1 })
 

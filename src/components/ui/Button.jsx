@@ -1,8 +1,5 @@
 import PropTypes from 'prop-types'
 
-/**
- * Reusable Button component with multiple variants
- */
 export function Button({
     children,
     variant = 'primary',

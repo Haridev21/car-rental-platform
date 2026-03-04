@@ -41,7 +41,6 @@ export default function HomePage() {
 
     return (
         <div className="flex flex-col">
-            {/* Hero Section */}
             <section className="relative h-[600px] lg:h-[700px] flex items-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img
@@ -62,7 +61,6 @@ export default function HomePage() {
                             Start your journey today with just a few clicks.
                         </p>
 
-                        {/* Search Widget */}
                         <div className="bg-white dark:bg-slate-800 p-6 lg:p-8 rounded-3xl shadow-2xl text-slate-800 dark:text-white animate-fade-in-up animation-delay-400">
                             <form onSubmit={handleSearch} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
                                 <div className="lg:col-span-2">
@@ -107,7 +105,6 @@ export default function HomePage() {
                 </div>
             </section>
 
-            {/* Featured Cars Section */}
             <section className="py-24 bg-slate-50 dark:bg-slate-900">
                 <div className="container-custom">
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
@@ -171,7 +168,6 @@ export default function HomePage() {
                 </div>
             </section>
 
-            {/* Popular Destinations */}
             <section className="py-24">
                 <div className="container-custom">
                     <h2 className="text-3xl font-bold text-center mb-16 dark:text-white">Popular Destinations</h2>

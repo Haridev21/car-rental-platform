@@ -39,7 +39,6 @@ export default function BookingPage() {
 
     useEffect(() => {
         if (!isAuthenticated) {
-            // Don't auto-redirect, let the user trigger the modal or handle it
         }
 
         const fetchData = async () => {

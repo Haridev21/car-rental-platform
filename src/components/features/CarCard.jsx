@@ -4,9 +4,6 @@ import { useFavorites } from '../../context/FavoritesContext'
 import { formatPrice } from '../../utils/pricing'
 import Rating from '../ui/Rating'
 
-/**
- * Car card component with grid and list variants
- */
 export function CarCard({ car, variant = 'grid' }) {
     const { toggleFavorite, isFavorite } = useFavorites()
     const favorite = isFavorite(car._id)

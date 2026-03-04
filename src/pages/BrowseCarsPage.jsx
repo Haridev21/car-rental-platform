@@ -65,7 +65,6 @@ export default function BrowseCarsPage() {
         <div className="bg-slate-50 dark:bg-slate-900 min-h-screen pb-20">
             <div className="container-custom py-8 lg:py-12">
                 <div className="flex flex-col lg:flex-row gap-8">
-                    {/* Sidebar Filters */}
                     <aside className="w-full lg:w-80 space-y-8">
                         <div className="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-card">
                             <div className="flex items-center justify-between mb-6">
@@ -78,7 +77,6 @@ export default function BrowseCarsPage() {
                                 </button>
                             </div>
 
-                            {/* Price Range */}
                             <div className="mb-8">
                                 <h4 className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-4">Price Per Day</h4>
                                 <input
@@ -92,7 +90,6 @@ export default function BrowseCarsPage() {
                                 </div>
                             </div>
 
-                            {/* Vehicle Type */}
                             <div className="mb-8">
                                 <h4 className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-4">Vehicle Type</h4>
                                 <div className="space-y-3">
@@ -110,7 +107,6 @@ export default function BrowseCarsPage() {
                                 </div>
                             </div>
 
-                            {/* Transmission */}
                             <div className="mb-8">
                                 <h4 className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-4">Transmission</h4>
                                 <div className="space-y-3">
@@ -130,7 +126,6 @@ export default function BrowseCarsPage() {
                         </div>
                     </aside>
 
-                    {/* Results Area */}
                     <main className="flex-1">
                         <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4 bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-sm">
                             <div className="text-slate-500 text-sm">
