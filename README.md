@@ -1,6 +1,6 @@
 # DriveEase
 
-Live Demo: [https://car-rental-platform-k61hdxeqp-haridevm84-3810s-projects.vercel.app/](https://car-rental-platform-k61hdxeqp-haridevm84-3810s-projects.vercel.app/)
+Live Demo: [https://car-rental-platform-k61hdxeqp-haridevm84-3810s-projects.vercel.app/](https://car-rental-platform-nine-alpha.vercel.app/)
 
 DriveEase is a car rental platform designed to make finding and booking your next ride simple and straightforward. Whether you're planning a weekend getaway or just need a reliable set of wheels for the day, this application provides a clean interface to browse, select, and manage your rentals.
 
