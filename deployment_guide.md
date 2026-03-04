@@ -8,7 +8,7 @@ Follow these steps to deploy your Car Rental project to the cloud.
 2.  **Create a New Web Service** and connect your GitHub repository.
 3.  **Root Directory**: `server`
 4.  **Runtime**: `Node`
-5.  **Build Command**: `npm install`
+5.  **Build Command**: `npm install` (Do NOT add `npm run build`)
 6.  **Start Command**: `npm start`
 7.  **Environment Variables**:
     - `MONGODB_URI`: *Your MongoDB Atlas connection string*
