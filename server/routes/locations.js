@@ -4,6 +4,9 @@ import { protect, authorize } from '../middleware/auth.js'
 
 const router = express.Router()
 
+// @route   GET /api/locations
+// @desc    Get all locations
+// @access  Public
 router.get('/', async (req, res) => {
     try {
         const locations = await Location.find({ isActive: true }).sort({ name: 1 })
@@ -28,6 +31,9 @@ router.get('/:id', async (req, res) => {
     }
 })
 
+// @route   POST /api/locations
+// @desc    Create a location
+// @access  Private (admin)
 router.post('/', protect, authorize('admin'), async (req, res) => {
     try {
         const location = await Location.create(req.body)
@@ -52,6 +58,9 @@ router.put('/:id', protect, authorize('admin'), async (req, res) => {
     }
 })
 
+// @route   DELETE /api/locations/:id
+// @desc    Delete a location
+// @access  Private (admin)
 router.delete('/:id', protect, authorize('admin'), async (req, res) => {
     try {
         const location = await Location.findByIdAndDelete(req.params.id)

@@ -5,6 +5,9 @@ import { protect } from '../middleware/auth.js'
 
 const router = express.Router()
 
+// @route   POST /api/reviews
+// @desc    Create a review
+// @access  Private
 router.post('/', protect, async (req, res) => {
     try {
         const { car, rating, title, comment, booking } = req.body
@@ -40,6 +43,9 @@ router.post('/', protect, async (req, res) => {
     }
 })
 
+// @route   GET /api/reviews/car/:carId
+// @desc    Get reviews for a car
+// @access  Public
 router.get('/car/:carId', async (req, res) => {
     try {
         const reviews = await Review.find({ car: req.params.carId })
@@ -52,6 +58,9 @@ router.get('/car/:carId', async (req, res) => {
     }
 })
 
+// @route   GET /api/reviews/recent
+// @desc    Get recent reviews (for testimonials)
+// @access  Public
 router.get('/recent', async (req, res) => {
     try {
         const reviews = await Review.find({ rating: { $gte: 4 } })
@@ -66,6 +75,9 @@ router.get('/recent', async (req, res) => {
     }
 })
 
+// @route   DELETE /api/reviews/:id
+// @desc    Delete a review
+// @access  Private
 router.delete('/:id', protect, async (req, res) => {
     try {
         const review = await Review.findById(req.params.id)

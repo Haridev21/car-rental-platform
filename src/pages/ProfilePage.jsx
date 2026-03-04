@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext'
 import { useToast } from '../context/ToastContext'
 
 export default function ProfilePage() {
-    const { user, login } = useAuth() // login updates the user state
+    const { user } = useAuth()
     const { success, error } = useToast()
     const [isEditing, setIsEditing] = useState(false)
     const [formData, setFormData] = useState({
@@ -27,8 +27,6 @@ export default function ProfilePage() {
             await new Promise(resolve => setTimeout(resolve, 1000))
 
             // Update local user state (mock)
-            const updatedUser = { ...user, ...formData }
-            // Assuming login can be used to update state, otherwise we'd need a specific updateProfile method
             // logic would go here.
 
             success('Profile Updated', 'Your profile details have been saved successfully.')

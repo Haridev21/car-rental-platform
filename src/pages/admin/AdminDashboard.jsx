@@ -13,7 +13,6 @@ export default function AdminDashboard() {
         totalRevenue: 0,
         monthlyRevenue: 0
     })
-    const [loading, setLoading] = useState(true)
 
     const menuItems = [
         { to: '/admin/dashboard', label: 'Overview', icon: '💎' },
@@ -30,8 +29,6 @@ export default function AdminDashboard() {
                 setStats(data.stats)
             } catch (err) {
                 console.error('Error fetching admin stats:', err)
-            } finally {
-                setLoading(false)
             }
         }
         fetchAdminStats()

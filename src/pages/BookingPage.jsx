@@ -39,6 +39,7 @@ export default function BookingPage() {
 
     useEffect(() => {
         if (!isAuthenticated) {
+            // Don't auto-redirect, let the user trigger the modal or handle it
         }
 
         const fetchData = async () => {
@@ -66,7 +67,7 @@ export default function BookingPage() {
             }
         }
         fetchData()
-    }, [carId, user])
+    }, [carId, user, isAuthenticated])
 
     const days = calculateDuration(bookingData.pickupDate, bookingData.returnDate)
     const pricing = car ? calculateTotalPrice(

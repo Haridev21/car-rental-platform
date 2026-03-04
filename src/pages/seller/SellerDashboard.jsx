@@ -12,7 +12,6 @@ export default function SellerDashboard() {
         totalEarnings: 0,
         activeBookings: 0
     })
-    const [loading, setLoading] = useState(true)
 
     const menuItems = [
         { to: '/seller/dashboard', label: 'Overview', icon: '📊' },
@@ -35,8 +34,6 @@ export default function SellerDashboard() {
                 })
             } catch (err) {
                 console.error('Error fetching seller stats:', err)
-            } finally {
-                setLoading(false)
             }
         }
         fetchStats()

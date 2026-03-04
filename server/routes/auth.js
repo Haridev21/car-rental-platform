@@ -4,6 +4,9 @@ import { protect } from '../middleware/auth.js'
 
 const router = express.Router()
 
+// @route   POST /api/auth/signup
+// @desc    Register a new user
+// @access  Public
 router.post('/signup', async (req, res) => {
     try {
         const { name, email, password, role, phone, licenseNumber, dateOfBirth } = req.body
@@ -49,6 +52,9 @@ router.post('/signup', async (req, res) => {
     }
 })
 
+// @route   POST /api/auth/signin
+// @desc    Login user
+// @access  Public
 router.post('/signin', async (req, res) => {
     try {
         const { email, password } = req.body
@@ -100,6 +106,9 @@ router.post('/signin', async (req, res) => {
     }
 })
 
+// @route   GET /api/auth/me
+// @desc    Get current logged in user
+// @access  Private
 router.get('/me', protect, async (req, res) => {
     res.json({
         success: true,
@@ -107,6 +116,9 @@ router.get('/me', protect, async (req, res) => {
     })
 })
 
+// @route   PUT /api/auth/profile
+// @desc    Update user profile
+// @access  Private
 router.put('/profile', protect, async (req, res) => {
     try {
         const { name, phone, licenseNumber, dateOfBirth } = req.body
@@ -129,6 +141,9 @@ router.put('/profile', protect, async (req, res) => {
     }
 })
 
+// @route   PUT /api/auth/password
+// @desc    Update password
+// @access  Private
 router.put('/password', protect, async (req, res) => {
     try {
         const { currentPassword, newPassword } = req.body

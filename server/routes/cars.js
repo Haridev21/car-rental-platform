@@ -5,6 +5,9 @@ import Booking from '../models/Booking.js'
 
 const router = express.Router()
 
+// @route   GET /api/cars
+// @desc    Get all cars with filters
+// @access  Public
 router.get('/', async (req, res) => {
     try {
         const { type, brand, transmission, fuel, minPrice, maxPrice, seats, available, sort, page = 1, limit = 12 } = req.query
@@ -55,6 +58,9 @@ router.get('/', async (req, res) => {
     }
 })
 
+// @route   GET /api/cars/featured
+// @desc    Get featured cars
+// @access  Public
 router.get('/featured', async (req, res) => {
     try {
         const cars = await Car.find({ available: true })
@@ -69,6 +75,9 @@ router.get('/featured', async (req, res) => {
 
 
 
+// @route   POST /api/cars
+// @desc    Create a car
+// @access  Private (seller, admin)
 router.post('/', protect, authorize('seller', 'admin'), async (req, res) => {
     try {
         req.body.seller = req.user._id
@@ -80,6 +89,9 @@ router.post('/', protect, authorize('seller', 'admin'), async (req, res) => {
     }
 })
 
+// @route   PUT /api/cars/:id
+// @desc    Update a car
+// @access  Private (seller owner, admin)
 router.put('/:id', protect, authorize('seller', 'admin'), async (req, res) => {
     try {
         let car = await Car.findById(req.params.id)
@@ -101,6 +113,9 @@ router.put('/:id', protect, authorize('seller', 'admin'), async (req, res) => {
     }
 })
 
+// @route   DELETE /api/cars/:id
+// @desc    Delete a car
+// @access  Private (admin only)
 router.delete('/:id', protect, authorize('admin'), async (req, res) => {
     try {
         const car = await Car.findById(req.params.id)
@@ -117,6 +132,9 @@ router.delete('/:id', protect, authorize('admin'), async (req, res) => {
     }
 })
 
+// @route   GET /api/cars/my-cars
+// @desc    Get current seller's cars
+// @access  Private (seller)
 router.get('/my-cars', protect, authorize('seller'), async (req, res) => {
     try {
         const cars = await Car.find({ seller: req.user._id })
@@ -126,6 +144,9 @@ router.get('/my-cars', protect, authorize('seller'), async (req, res) => {
     }
 })
 
+// @route   GET /api/cars/seller-stats
+// @desc    Get stats for current seller
+// @access  Private (seller)
 router.get('/seller-stats', protect, authorize('seller'), async (req, res) => {
     try {
         const cars = await Car.find({ seller: req.user._id })
@@ -157,6 +178,9 @@ router.get('/seller-stats', protect, authorize('seller'), async (req, res) => {
     }
 })
 
+// @route   GET /api/cars/:id
+// @desc    Get single car
+// @access  Public
 router.get('/:id', async (req, res) => {
     try {
         const car = await Car.findById(req.params.id).populate('seller', 'name').populate('location')

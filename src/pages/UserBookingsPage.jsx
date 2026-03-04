@@ -47,7 +47,7 @@ export default function UserBookingsPage() {
                 <div className="text-center py-20 bg-slate-50 dark:bg-slate-800 rounded-3xl">
                     <div className="text-6xl mb-4">🚗</div>
                     <h2 className="text-xl font-bold text-slate-800 dark:text-white mb-2">No bookings yet</h2>
-                    <p className="text-slate-500 mb-6">You haven't made any reservations yet.</p>
+                    <p className="text-slate-500 mb-6">You haven&apos;t made any reservations yet.</p>
                     <Link to="/cars" className="btn-primary">Browse Cars</Link>
                 </div>
             ) : (
@@ -67,9 +67,9 @@ export default function UserBookingsPage() {
                                         <p className="text-slate-500 text-sm">{booking.car?.type} • {booking.car?.brand}</p>
                                     </div>
                                     <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase ${booking.status === 'confirmed' ? 'bg-green-100 text-green-700' :
-                                            booking.status === 'cancelled' ? 'bg-rose-100 text-rose-700' :
-                                                booking.status === 'completed' ? 'bg-blue-100 text-blue-700' :
-                                                    'bg-slate-100 text-slate-700'
+                                        booking.status === 'cancelled' ? 'bg-rose-100 text-rose-700' :
+                                            booking.status === 'completed' ? 'bg-blue-100 text-blue-700' :
+                                                'bg-slate-100 text-slate-700'
                                         }`}>
                                         {booking.status}
                                     </span>

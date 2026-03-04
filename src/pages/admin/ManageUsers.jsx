@@ -1,13 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { DashboardLayout } from '../../components/layout/DashboardLayout'
-import api from '../../utils/api'
 import { Button } from '../../components/ui/Button'
-import { useToast } from '../../context/ToastContext'
 
 export default function ManageUsers() {
-    const [users, setUsers] = useState([])
-    const [loading, setLoading] = useState(true)
-
     const menuItems = [
         { to: '/admin/dashboard', label: 'Overview', icon: '💎' },
         { to: '/admin/users', label: 'User Hub', icon: '👥' },
@@ -16,23 +11,11 @@ export default function ManageUsers() {
         { to: '/admin/settings', label: 'System', icon: '⚙️' }
     ]
 
-    useEffect(() => {
-        const fetchUsers = async () => {
-            try {
-                // Mocking user list for now as we don't have a broad user search yet
-                setUsers([
-                    { _id: '1', name: 'Admin User', email: 'admin@driveease.com', role: 'admin', joined: '2024-01-01' },
-                    { _id: '2', name: 'John Seller', email: 'seller@driveease.com', role: 'seller', joined: '2024-01-05' },
-                    { _id: '3', name: 'Test User', email: 'user@driveease.com', role: 'user', joined: '2024-01-10' }
-                ])
-            } catch (err) {
-                console.error('Error fetching users:', err)
-            } finally {
-                setLoading(false)
-            }
-        }
-        fetchUsers()
-    }, [])
+    const [users] = useState([
+        { _id: '1', name: 'Admin User', email: 'admin@driveease.com', role: 'admin', joined: '2024-01-01' },
+        { _id: '2', name: 'John Seller', email: 'seller@driveease.com', role: 'seller', joined: '2024-01-05' },
+        { _id: '3', name: 'Test User', email: 'user@driveease.com', role: 'user', joined: '2024-01-10' }
+    ])
 
     return (
         <DashboardLayout menuItems={menuItems}>

@@ -4,7 +4,7 @@ import { ToastContainer } from './components/ui/Toast'
 import { LoginModal, SignupModal } from './components/features/AuthModals'
 import ProtectedRoute from './components/auth/ProtectedRoute'
 
-
+// Pages
 import HomePage from './pages/HomePage'
 import BrowseCarsPage from './pages/BrowseCarsPage'
 import CarDetailsPage from './pages/CarDetailsPage'
@@ -19,7 +19,7 @@ import FavoritesPage from './pages/FavoritesPage'
 import UserBookingsPage from './pages/UserBookingsPage'
 import ProfilePage from './pages/ProfilePage'
 
-
+// Dashboards
 import SellerDashboard from './pages/seller/SellerDashboard'
 import MyCars from './pages/seller/MyCars'
 import AddEditCar from './pages/seller/AddEditCar'
@@ -35,6 +35,7 @@ function App() {
     return (
         <>
             <Routes>
+                {/* Main Site Routes */}
                 <Route path="/" element={<Layout><HomePage /></Layout>} />
                 <Route path="/cars" element={<Layout><BrowseCarsPage /></Layout>} />
                 <Route path="/cars/:id" element={<Layout><CarDetailsPage /></Layout>} />
@@ -62,7 +63,7 @@ function App() {
                     </ProtectedRoute>
                 } />
 
-
+                {/* Protected Seller Routes */}
                 <Route
                     path="/seller/*"
                     element={
@@ -80,7 +81,7 @@ function App() {
                     }
                 />
 
-
+                {/* Protected Admin Routes */}
                 <Route
                     path="/admin/*"
                     element={

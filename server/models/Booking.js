@@ -66,6 +66,7 @@ const bookingSchema = new mongoose.Schema({
     }
 })
 
+// Prevent double booking
 bookingSchema.index({ car: 1, pickupDate: 1, returnDate: 1 })
 
 export default mongoose.model('Booking', bookingSchema)

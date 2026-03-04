@@ -36,8 +36,10 @@ const reviewSchema = new mongoose.Schema({
     }
 })
 
+// Prevent user from submitting more than one review per car
 reviewSchema.index({ car: 1, user: 1 }, { unique: true })
 
+// Static method to calculate average rating
 reviewSchema.statics.getAverageRating = async function (carId) {
     const obj = await this.aggregate([
         { $match: { car: carId } },
@@ -60,10 +62,12 @@ reviewSchema.statics.getAverageRating = async function (carId) {
     }
 }
 
+// Update car rating after save
 reviewSchema.post('save', async function () {
     await this.constructor.getAverageRating(this.car)
 })
 
+// Update car rating after remove
 reviewSchema.post('remove', async function () {
     await this.constructor.getAverageRating(this.car)
 })

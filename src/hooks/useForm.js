@@ -26,7 +26,8 @@ export function useForm(initialValues = {}, validate = null, onSubmit = null) {
         // Clear error when field is modified
         if (errors[name]) {
             setErrors(prev => {
-                const { [name]: _, ...rest } = prev
+                // eslint-disable-next-line no-unused-vars
+                const { [name]: _removed, ...rest } = prev
                 return rest
             })
         }

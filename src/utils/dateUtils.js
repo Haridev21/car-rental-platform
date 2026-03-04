@@ -136,7 +136,7 @@ export const getCalendarDays = (year, month) => {
 }
 
 // Mock booked dates (for demonstration)
-export const getBookedDates = (carId) => {
+export const getBookedDates = () => {
     // Return some mock booked dates
     const today = new Date()
     const bookedDates = []
@@ -156,7 +156,7 @@ export const getBookedDates = (carId) => {
 }
 
 // Check if date is booked
-export const isDateBooked = (date, carId) => {
-    const bookedDates = getBookedDates(carId)
+export const isDateBooked = (date) => {
+    const bookedDates = getBookedDates()
     return bookedDates.includes(date)
 }

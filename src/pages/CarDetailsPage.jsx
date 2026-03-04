@@ -58,6 +58,7 @@ export default function CarDetailsPage() {
         <div className="bg-slate-50 dark:bg-slate-900 min-h-screen pb-20">
             <div className="container-custom py-8 lg:py-12">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                    {/* Left Column: Media */}
                     <div className="space-y-6">
                         <ImageGallery images={car.images?.length > 0 ? car.images : [car.image]} />
 
@@ -90,6 +91,7 @@ export default function CarDetailsPage() {
                         </div>
                     </div>
 
+                    {/* Right Column: Info & Booking */}
                     <div className="space-y-8">
                         <div>
                             <div className="flex items-center gap-2 mb-2">
@@ -143,6 +145,7 @@ export default function CarDetailsPage() {
                     </div>
                 </div>
 
+                {/* Reviews Section */}
                 <section className="mb-20">
                     <h2 className="text-3xl font-bold dark:text-white mb-10">Customer Reviews</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -163,6 +166,7 @@ export default function CarDetailsPage() {
                     </div>
                 </section>
 
+                {/* Similar Cars */}
                 {similarCars.length > 0 && (
                     <section>
                         <h2 className="text-3xl font-bold dark:text-white mb-10">Similar Vehicles</h2>

@@ -6,6 +6,9 @@ import { protect, authorize } from '../middleware/auth.js'
 
 const router = express.Router()
 
+// @route   GET /api/stats/admin
+// @desc    Get platform stats for admin
+// @access  Private (admin)
 router.get('/admin', protect, authorize('admin'), async (req, res) => {
     try {
         const [totalCars, totalBookings, totalUsers, totalSellers] = await Promise.all([
