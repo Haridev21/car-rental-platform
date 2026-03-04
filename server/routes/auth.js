@@ -45,9 +45,20 @@ router.post('/signup', async (req, res) => {
             }
         })
     } catch (err) {
+        // Mongoose validation error
+        if (err.name === 'ValidationError') {
+            const message = Object.values(err.errors).map(val => val.message);
+            return res.status(400).json({ success: false, message });
+        }
+
+        // Duplicate key (email)
+        if (err.code === 11000) {
+            return res.status(400).json({ success: false, message: 'User already exists with this email' });
+        }
+
         res.status(500).json({
             success: false,
-            message: err.message
+            message: err.message || 'Server Error'
         })
     }
 })
