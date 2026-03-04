@@ -20,14 +20,18 @@ export default function CarDetailsPage() {
         const fetchCarDetails = async () => {
             setLoading(true)
             try {
-                const [carRes, reviewsRes, similarRes] = await Promise.all([
+                const [carRes, reviewsRes] = await Promise.all([
                     api.get(`/cars/${id}`),
-                    api.get(`/reviews/car/${id}`),
-                    api.get(`/cars?limit=4&type=${car?.type || 'SUV'}`) // Simplified similar cars for now
+                    api.get(`/reviews/car/${id}`)
                 ])
                 setCar(carRes.car)
                 setReviews(reviewsRes.reviews)
-                setSimilarCars(similarRes.cars.filter(c => c._id !== id))
+
+                // Fetch similar cars once we have the car type
+                if (carRes.car) {
+                    const similarRes = await api.get(`/cars?limit=4&type=${carRes.car.type}`)
+                    setSimilarCars(similarRes.cars.filter(c => c._id !== id))
+                }
             } catch (err) {
                 console.error('Error fetching car details:', err)
             } finally {

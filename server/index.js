@@ -24,6 +24,10 @@ app.use(cors())
 app.use(express.json())
 
 // Routes
+app.get('/', (req, res) => {
+    res.json({ message: 'DriveEase API is active. Go to /api/health for more info.' })
+})
+
 app.use('/api/auth', authRoutes)
 app.use('/api/cars', carRoutes)
 app.use('/api/bookings', bookingRoutes)
