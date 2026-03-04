@@ -13,6 +13,7 @@ Follow these steps to deploy your Car Rental project to the cloud.
 7.  **Environment Variables**:
     - `MONGODB_URI`: *Your MongoDB Atlas connection string*
     - `JWT_SECRET`: *A secure random string*
+    - `JWT_EXPIRE`: `7d`
     - `PORT`: `5001` (or leave as default)
 
 ## 2. Frontend Deployment (Vercel.com)
