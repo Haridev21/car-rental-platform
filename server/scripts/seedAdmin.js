@@ -13,7 +13,11 @@ const seedAdmin = async () => {
         const existingAdmin = await User.findOne({ email: adminEmail })
 
         if (existingAdmin) {
-            console.log('Admin user already exists!')
+            console.log('Admin user found. Forcing password reset to "password123"...')
+            existingAdmin.password = 'password123'
+            existingAdmin.role = 'admin'
+            await existingAdmin.save()
+            console.log('Admin user reset successfully!')
             process.exit(0)
         }
 
