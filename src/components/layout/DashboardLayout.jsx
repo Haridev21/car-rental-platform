@@ -1,10 +1,18 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { useAuth } from '../../context/AuthContext'
 
 export function DashboardLayout({ children, menuItems = [] }) {
     const { user, logout } = useAuth()
     const location = useLocation()
+    const navigate = useNavigate()
+
+    const handleLogout = () => {
+        logout()
+        navigate('/')
+    }
+
+    const initial = user?.name ? user.name.charAt(0).toUpperCase() : '?'
 
     return (
         <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex">
@@ -43,15 +51,15 @@ export function DashboardLayout({ children, menuItems = [] }) {
                 <div className="p-4 border-t border-slate-100 dark:border-slate-700">
                     <div className="flex items-center gap-3 p-3 mb-4 bg-slate-50 dark:bg-slate-700/50 rounded-xl">
                         <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900/50 text-primary-600 rounded-full flex items-center justify-center font-bold">
-                            {user.name.charAt(0)}
+                            {initial}
                         </div>
                         <div className="flex-1 min-w-0">
-                            <p className="text-sm font-semibold text-slate-800 dark:text-white truncate">{user.name}</p>
-                            <p className="text-xs text-slate-500 truncate capitalize">{user.role}</p>
+                            <p className="text-sm font-semibold text-slate-800 dark:text-white truncate">{user?.name || 'Admin'}</p>
+                            <p className="text-xs text-slate-500 truncate capitalize">{user?.role || 'admin'}</p>
                         </div>
                     </div>
                     <button
-                        onClick={logout}
+                        onClick={handleLogout}
                         className="w-full flex items-center gap-3 px-4 py-3 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl transition-all"
                     >
                         <span>➔</span>
@@ -66,9 +74,29 @@ export function DashboardLayout({ children, menuItems = [] }) {
                 <header className="lg:hidden bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 p-4 sticky top-0 z-10">
                     <div className="flex items-center justify-between">
                         <Link to="/" className="font-bold text-slate-800 dark:text-white">DriveEase</Link>
-                        <div className="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center text-white text-xs">
-                            {user.name.charAt(0)}
+                        <div className="flex items-center gap-3">
+                            <div className="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
+                                {initial}
+                            </div>
+                            <button onClick={handleLogout} className="text-xs text-red-500 font-semibold">Logout</button>
                         </div>
+                    </div>
+                    {/* Mobile nav links */}
+                    <div className="flex gap-2 mt-3 overflow-x-auto pb-1">
+                        {menuItems.map(item => (
+                            <Link
+                                key={item.to}
+                                to={item.to}
+                                className={`flex-shrink-0 flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium ${
+                                    location.pathname === item.to
+                                        ? 'bg-primary-100 text-primary-600'
+                                        : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300'
+                                }`}
+                            >
+                                <span>{item.icon}</span>
+                                <span>{item.label}</span>
+                            </Link>
+                        ))}
                     </div>
                 </header>
 

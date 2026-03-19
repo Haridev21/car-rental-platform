@@ -2,10 +2,12 @@ import { useState, useEffect } from 'react'
 import { DashboardLayout } from '../../components/layout/DashboardLayout'
 import { Button } from '../../components/ui/Button'
 import api from '../../utils/api'
+import { useToast } from '../../context/ToastContext'
 
 export default function ManageUsers() {
     const [users, setUsers] = useState([])
     const [loading, setLoading] = useState(true)
+    const { success: showSuccess, error: showError } = useToast()
 
     const menuItems = [
         { to: '/admin/dashboard', label: 'Overview', icon: '💎' },
@@ -34,9 +36,10 @@ export default function ManageUsers() {
             try {
                 await api.delete(`/users/${id}`)
                 setUsers(users.filter(u => u._id !== id))
+                showSuccess('User Deleted', 'The user account has been removed.')
             } catch (err) {
                 console.error('Delete failed:', err)
-                alert(err.response?.data?.message || err.message || 'Failed to delete user')
+                showError('Delete Failed', err.message || 'Could not delete user.')
             }
         }
     }
@@ -45,9 +48,10 @@ export default function ManageUsers() {
         try {
             const data = await api.put(`/users/${id}/role`, { role: newRole })
             setUsers(users.map(u => u._id === id ? data.user : u))
+            showSuccess('Role Updated', 'User role changed successfully.')
         } catch (err) {
             console.error('Role update failed:', err)
-            alert(err.response?.data?.message || err.message || 'Failed to update role')
+            showError('Update Failed', err.message || 'Could not update role.')
         }
     }
 

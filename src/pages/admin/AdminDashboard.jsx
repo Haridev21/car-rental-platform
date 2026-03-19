@@ -26,7 +26,7 @@ export default function AdminDashboard() {
         const fetchAdminStats = async () => {
             try {
                 const data = await api.get('/stats/admin')
-                setStats(data.stats)
+                if (data?.stats) setStats(data.stats)
             } catch (err) {
                 console.error('Error fetching admin stats:', err)
             }
