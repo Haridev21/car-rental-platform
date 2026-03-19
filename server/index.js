@@ -3,6 +3,9 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import connectDB from './config/db.js'
 
+// Load env vars FIRST before anything else
+dotenv.config()
+
 // Route imports
 import authRoutes from './routes/auth.js'
 import carRoutes from './routes/cars.js'
@@ -11,9 +14,6 @@ import reviewRoutes from './routes/reviews.js'
 import locationRoutes from './routes/locations.js'
 import statsRoutes from './routes/stats.js'
 import userRoutes from './routes/users.js'
-
-// Load env vars
-dotenv.config()
 
 // Connect to database
 await connectDB()
@@ -36,6 +36,7 @@ app.use('/api/reviews', reviewRoutes)
 app.use('/api/locations', locationRoutes)
 app.use('/api/stats', statsRoutes)
 app.use('/api/users', userRoutes)
+console.log('[Server] All routes mounted: /api/auth /api/cars /api/bookings /api/reviews /api/locations /api/stats /api/users')
 
 // Health check
 app.get('/api/health', (req, res) => {
