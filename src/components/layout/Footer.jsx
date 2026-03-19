@@ -18,7 +18,8 @@ export function Footer() {
         company: [
             { to: '/about', label: 'About Us' },
             { to: '/contact', label: 'Contact' },
-            { to: '/locations', label: 'Locations' }
+            { to: '/locations', label: 'Locations' },
+            { to: '/admin/login', label: 'Admin Portal' }
         ],
         support: [
             { to: '/faq', label: 'FAQ' },
