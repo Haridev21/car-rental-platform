@@ -27,6 +27,7 @@ import SellerBookings from './pages/seller/SellerBookings'
 import SellerReviews from './pages/seller/SellerReviews'
 import SellerStats from './pages/seller/SellerStats'
 import AdminDashboard from './pages/admin/AdminDashboard'
+import AdminLogin from './pages/admin/AdminLogin'
 import ManageUsers from './pages/admin/ManageUsers'
 import AllCars from './pages/admin/AllCars'
 import SystemBookings from './pages/admin/SystemBookings'
@@ -80,6 +81,9 @@ function App() {
                         </ProtectedRoute>
                     }
                 />
+
+                {/* Public Admin Login Page */}
+                <Route path="/admin/login" element={<AdminLogin />} />
 
                 {/* Protected Admin Routes */}
                 <Route
