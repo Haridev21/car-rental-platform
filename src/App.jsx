@@ -31,6 +31,7 @@ import AdminLogin from './pages/admin/AdminLogin'
 import ManageUsers from './pages/admin/ManageUsers'
 import AllCars from './pages/admin/AllCars'
 import SystemBookings from './pages/admin/SystemBookings'
+import AdminSettings from './pages/admin/AdminSettings'
 
 function App() {
     return (
@@ -95,6 +96,7 @@ function App() {
                                 <Route path="users" element={<ManageUsers />} />
                                 <Route path="cars" element={<AllCars />} />
                                 <Route path="bookings" element={<SystemBookings />} />
+                                <Route path="settings" element={<AdminSettings />} />
                             </Routes>
                         </ProtectedRoute>
                     }

@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { useToast } from '../context/ToastContext'
+import api from '../utils/api'
 
 export default function ProfilePage() {
     const { user } = useAuth()
@@ -20,19 +21,15 @@ export default function ProfilePage() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        // Simulate API call to update profile
         try {
-            // In a real app, you would call api.put('/users/profile', formData)
-            // For now, we'll just simulate a successful update
-            await new Promise(resolve => setTimeout(resolve, 1000))
-
-            // Update local user state (mock)
-            // logic would go here.
-
+            await api.put('/auth/profile', {
+                name: formData.name,
+                phone: formData.phone
+            })
             success('Profile Updated', 'Your profile details have been saved successfully.')
             setIsEditing(false)
         } catch (err) {
-            error('Update Failed', 'Could not update profile. Please try again.')
+            error('Update Failed', err.message || 'Could not update profile. Please try again.')
         }
     }
 
