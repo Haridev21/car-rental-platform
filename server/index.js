@@ -10,6 +10,7 @@ import bookingRoutes from './routes/bookings.js'
 import reviewRoutes from './routes/reviews.js'
 import locationRoutes from './routes/locations.js'
 import statsRoutes from './routes/stats.js'
+import userRoutes from './routes/users.js'
 
 // Load env vars
 dotenv.config()
@@ -34,6 +35,7 @@ app.use('/api/bookings', bookingRoutes)
 app.use('/api/reviews', reviewRoutes)
 app.use('/api/locations', locationRoutes)
 app.use('/api/stats', statsRoutes)
+app.use('/api/users', userRoutes)
 
 // Health check
 app.get('/api/health', (req, res) => {

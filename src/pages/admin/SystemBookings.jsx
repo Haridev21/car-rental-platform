@@ -29,6 +29,16 @@ export default function SystemBookings() {
         fetchAllBookings()
     }, [])
 
+    const handleStatusChange = async (id, newStatus) => {
+        try {
+            const data = await api.put(`/bookings/${id}/status`, { status: newStatus })
+            setBookings(bookings.map(b => b._id === id ? data.booking : b))
+        } catch (err) {
+            console.error('Status update failed:', err)
+            alert(err.response?.data?.message || err.message || 'Failed to update status')
+        }
+    }
+
     return (
         <DashboardLayout menuItems={menuItems}>
             <div className="mb-8">
@@ -79,7 +89,17 @@ export default function SystemBookings() {
                                             </span>
                                         </td>
                                         <td className="px-6 py-4 text-right">
-                                            <button className="text-xs font-bold text-primary-600 hover:underline">View Log</button>
+                                            <div className="flex items-center justify-end gap-2">
+                                                {booking.status !== 'cancelled' && booking.status !== 'completed' && (
+                                                    <button onClick={() => handleStatusChange(booking._id, 'cancelled')} className="text-xs font-bold text-red-600 hover:underline">Cancel</button>
+                                                )}
+                                                {booking.status === 'confirmed' && (
+                                                    <button onClick={() => handleStatusChange(booking._id, 'active')} className="text-xs font-bold text-blue-600 hover:underline">Start</button>
+                                                )}
+                                                {booking.status === 'active' && (
+                                                    <button onClick={() => handleStatusChange(booking._id, 'completed')} className="text-xs font-bold text-green-600 hover:underline">Complete</button>
+                                                )}
+                                            </div>
                                         </td>
                                     </tr>
                                 ))
