@@ -109,9 +109,9 @@ export function CarCard({ car, variant = 'grid' }) {
 
                 <button
                     onClick={handleFavoriteClick}
-                    className={`absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-xl backdrop-blur-xl transition-all duration-300 transform group-hover:translate-x-0 translate-x-12 ${favorite
-                        ? 'bg-red-500 text-white shadow-lg shadow-red-500/25 translate-x-0'
-                        : 'bg-white/40 text-white border border-white/40 hover:bg-white hover:text-red-500'
+                    className={`absolute top-4 right-4 w-10 h-10 flex items-center justify-center z-10 rounded-xl backdrop-blur-xl transition-all duration-300 ${favorite
+                        ? 'bg-red-500 text-white shadow-lg shadow-red-500/25'
+                        : 'bg-slate-900/40 text-white border border-white/20 hover:bg-white hover:text-red-500'
                         }`}
                 >
                     {favorite ? '❤️' : '🤍'}
