@@ -41,7 +41,7 @@ router.get('/', async (req, res) => {
         const skip = (parseInt(page) - 1) * parseInt(limit)
 
         const [cars, total] = await Promise.all([
-            Car.find(query).sort(sortOption).skip(skip).limit(parseInt(limit)),
+            Car.find(query).populate('seller', 'name email').sort(sortOption).skip(skip).limit(parseInt(limit)),
             Car.countDocuments(query)
         ])
 
