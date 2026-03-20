@@ -82,7 +82,7 @@ export default function HomePage() {
                                     <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 px-1">Pickup Date</label>
                                     <input
                                         type="date"
-                                        className="w-full bg-slate-50 dark:bg-slate-700 border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary-500"
+                                        className="w-full bg-slate-50 dark:bg-slate-700 border-none rounded-xl px-4 pr-10 py-3 focus:ring-2 focus:ring-primary-500 min-w-[150px]"
                                         value={searchParams.pickupDate}
                                         onChange={(e) => setSearchParams({ ...searchParams, pickupDate: e.target.value })}
                                     />
