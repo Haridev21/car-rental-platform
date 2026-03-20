@@ -21,13 +21,44 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3rem;
+    gap: 2.5rem;
     position: relative;
     z-index: 10;
 }
 
-.master-splash-content.minimalist {
-    padding-bottom: 2rem;
+.automotive-image-wrapper {
+    position: relative;
+    width: 500px;
+    max-width: 90vw;
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+    animation: imageEntrance 2s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
+}
+
+.splash-car-image {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));
+}
+
+.car-reflection-glow {
+    position: absolute;
+    bottom: -15%;
+    left: 10%;
+    right: 10%;
+    height: 30%;
+    background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+    filter: blur(15px);
+    opacity: 0;
+    animation: fadeInGlow 1.5s ease-out 1.5s forwards;
+}
+
+@keyframes imageEntrance {
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes fadeInGlow {
+    to { opacity: 1; }
 }
 
 .brand-letters {
