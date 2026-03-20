@@ -19,6 +19,10 @@ import FavoritesPage from './pages/FavoritesPage'
 import UserBookingsPage from './pages/UserBookingsPage'
 import ProfilePage from './pages/ProfilePage'
 
+// Components
+import SplashScreen from './components/ui/SplashScreen'
+import { useState, useEffect } from 'react'
+
 // Dashboards
 import SellerDashboard from './pages/seller/SellerDashboard'
 import MyCars from './pages/seller/MyCars'
@@ -34,8 +38,18 @@ import SystemBookings from './pages/admin/SystemBookings'
 import AdminSettings from './pages/admin/AdminSettings'
 
 function App() {
+    const [showSplash, setShowSplash] = useState(true)
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowSplash(false)
+        }, 3200) // Duration matches the CSS fadeOut animation
+        return () => clearTimeout(timer)
+    }, [])
+
     return (
         <>
+            {showSplash && <SplashScreen />}
             <Routes>
                 {/* Main Site Routes */}
                 <Route path="/" element={<Layout><HomePage /></Layout>} />
