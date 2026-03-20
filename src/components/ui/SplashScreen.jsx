@@ -29,16 +29,19 @@ const SplashScreen = () => {
                             </linearGradient>
                         </defs>
                         <g className="porsche-911-group" fill="none" stroke="currentColor" strokeWidth="1.2">
-                            {/* Iconic Porsche 911 Silhouette (Flyline) */}
+                            {/* Iconic Porsche 911 Silhouette (Flyline) - Refined Front */}
                             <path 
                                 className="car-line porsche-body" 
-                                d="M15,62 L20,60 Q35,58 45,52 Q55,42 65,38 Q100,22 145,35 Q175,42 185,58 L190,62 L190,68 L180,72 L160,72 M40,72 L15,72 L10,68 L10,62" 
+                                d="M8,66 Q8,65 12,64 L18,62 Q40,61 48,52 Q55,42 65,38 Q100,22 145,35 Q175,42 185,58 L190,62 L190,68 L180,72 L160,72 M40,72 L15,72 L8,68 L8,66" 
                                 stroke="url(#porsche-gradient)"
                             />
+                            {/* Headlight Detail (The iconic 911 'eye') */}
+                            <ellipse className="car-line porsche-headlight" cx="42" cy="56" rx="3" ry="5" transform="rotate(-30 42 56)" opacity="0.6" strokeWidth="0.8" />
+                            
                             {/* Window & Cabin line */}
                             <path className="car-line porsche-window" d="M70,38 Q100,28 140,36 Q135,46 125,48 Q100,44 75,48 Z" opacity="0.6" />
                             {/* Rear Light Bar (Porsche Signature) */}
-                            <path className="car-line porsche-light-bar" d="M175,55 L188,55" stroke="#ef4444" strokeWidth="2" strokeLinecap="round" />
+                            <path className="car-line porsche-light-bar" d="M175,55 L188,55" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round" />
                             {/* Wheels */}
                             <g className="wheel-group">
                                 <circle className="car-line wheel-rim" cx="50" cy="70" r="9" />
