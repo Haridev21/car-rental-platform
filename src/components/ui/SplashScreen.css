@@ -45,23 +45,30 @@
     animation: drawContour 3.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-.body-outline {
-    stroke-width: 1.5;
+.porsche-body {
+    stroke-width: 1.8;
 }
 
-.window-outline, .detail-line {
-    animation-delay: 1.5s;
+.porsche-window, .porsche-door {
+    animation-delay: 1s;
+}
+
+.porsche-light-bar {
+    stroke-dasharray: 50;
+    stroke-dashoffset: 50;
+    animation: drawContour 1s ease-out 3s forwards;
+    filter: drop-shadow(0 0 5px #ef4444);
 }
 
 .wheel-rim, .wheel-spokes {
     stroke-dasharray: 100;
     stroke-dashoffset: 100;
-    animation: drawContour 2s ease-out 1s forwards;
+    animation: drawContour 2s ease-out 1.5s forwards;
 }
 
 .car-shadow-glow {
     position: absolute;
-    bottom: 0;
+    bottom: -2px;
     left: 20%;
     right: 20%;
     height: 4px;
