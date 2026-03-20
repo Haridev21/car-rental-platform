@@ -167,3 +167,13 @@
     animation-delay: 500ms;
   }
 }
+/* Fix for date input calendar icon alignment */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(0.5);
+  margin-left: -5px;
+}
+
+.dark input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
