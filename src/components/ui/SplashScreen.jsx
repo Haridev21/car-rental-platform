@@ -8,7 +8,7 @@ const SplashScreen = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsVisible(false);
-        }, 6500);
+        }, 6200);
         return () => clearTimeout(timer);
     }, []);
 
@@ -19,10 +19,17 @@ const SplashScreen = () => {
     return (
         <div className="master-splash-container">
             <div className="master-splash-overlay"></div>
-            <div className="master-splash-content">
-                <div className="automotive-image-wrapper">
-                    <img src={porscheImg} alt="Porsche 911" className="splash-car-image" />
-                    <div className="car-reflection-glow"></div>
+            <div className="master-splash-content photo-mode">
+                <div className="porsche-hero-wrapper">
+                    <div className="glass-card">
+                        <img 
+                            src={porscheImg} 
+                            alt="Porsche 911 Carrera" 
+                            className="porsche-photo"
+                        />
+                        <div className="card-shine"></div>
+                    </div>
+                    <div className="hero-glow"></div>
                 </div>
                 
                 <div className="staggered-text-wrapper">

@@ -21,44 +21,76 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2.5rem;
+    gap: 3.5rem;
     position: relative;
     z-index: 10;
 }
 
-.automotive-image-wrapper {
+.porsche-hero-wrapper {
     position: relative;
-    width: 500px;
+    width: 480px;
     max-width: 90vw;
-    opacity: 0;
-    transform: scale(0.95) translateY(10px);
-    animation: imageEntrance 2s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
+    perspective: 1000px;
 }
 
-.splash-car-image {
+.glass-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.5),
+        inset 0 0 20px rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+    transform: rotateX(10deg) translateY(20px);
+    opacity: 0;
+    animation: cardEntrance 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+}
+
+.porsche-photo {
     width: 100%;
     height: auto;
-    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));
+    display: block;
+    transform: scale(1.1);
+    animation: photoZoom 8s ease-out forwards;
 }
 
-.car-reflection-glow {
+.card-shine {
     position: absolute;
-    bottom: -15%;
-    left: 10%;
-    right: 10%;
-    height: 30%;
-    background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
-    filter: blur(15px);
+    inset: 0;
+    background: linear-gradient(
+        110deg,
+        transparent 20%,
+        rgba(255, 255, 255, 0.4) 40%,
+        rgba(255, 255, 255, 0.4) 45%,
+        transparent 65%
+    );
+    transform: translateX(-100%);
+    animation: shineSweep 3s ease-in-out infinite;
+}
+
+.hero-glow {
+    position: absolute;
+    inset: -20px;
+    background: radial-gradient(circle at center, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+    z-index: -1;
+    filter: blur(20px);
     opacity: 0;
-    animation: fadeInGlow 1.5s ease-out 1.5s forwards;
+    animation: fadeInGlow 2s ease-out 1.2s forwards;
 }
 
-@keyframes imageEntrance {
-    to { opacity: 1; transform: scale(1) translateY(0); }
+@keyframes cardEntrance {
+    to { transform: rotateX(0) translateY(0); opacity: 1; }
 }
 
-@keyframes fadeInGlow {
-    to { opacity: 1; }
+@keyframes photoZoom {
+    to { transform: scale(1); }
+}
+
+@keyframes shineSweep {
+    0% { transform: translateX(-100%); }
+    20% { transform: translateX(100%); }
+    100% { transform: translateX(100%); }
 }
 
 .brand-letters {
