@@ -6,7 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: splashFadeOut 0.8s ease-in-out 2.5s forwards;
+    animation: splashFadeOut 0.8s ease-in-out 5.5s forwards;
 }
 
 .minimal-splash-content {
