@@ -1,94 +1,33 @@
 .master-splash-container {
     position: fixed;
     inset: 0;
-    z-index: 9999;
-    background: #020617;
+    background: #020617; /* Deep Midnight Blue */
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    z-index: 9999;
     overflow: hidden;
-    animation: masterFadeOut 0.8s cubic-bezier(0.4, 0, 0.2, 1) 5.2s forwards;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 .master-splash-overlay {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
-    animation: backgroundPulse 4s ease-in-out infinite alternate;
+    background: radial-gradient(circle at center, rgba(30, 58, 138, 0.15) 0%, transparent 70%);
+    animation: pulseGlow 4s ease-in-out infinite;
 }
 
 .master-splash-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3.5rem;
+    gap: 3rem;
     position: relative;
     z-index: 10;
 }
 
-.porsche-hero-wrapper {
-    position: relative;
-    width: 480px;
-    max-width: 90vw;
-    perspective: 1000px;
-}
-
-.glass-card {
-    position: relative;
-    padding: 1rem;
-    border-radius: 20px;
-    overflow: hidden;
-    transform: rotateX(10deg) translateY(20px);
-    opacity: 0;
-    animation: cardEntrance 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
-}
-
-.porsche-photo {
-    width: 100%;
-    height: auto;
-    display: block;
-    transform: scale(1.1);
-    mix-blend-mode: screen;
-    filter: brightness(1.1) contrast(1.1);
-    animation: photoZoom 8s ease-out forwards;
-}
-
-.card-shine {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        110deg,
-        transparent 20%,
-        rgba(255, 255, 255, 0.4) 40%,
-        rgba(255, 255, 255, 0.4) 45%,
-        transparent 65%
-    );
-    transform: translateX(-100%);
-    animation: shineSweep 3s ease-in-out infinite;
-}
-
-.hero-glow {
-    position: absolute;
-    inset: -20px;
-    background: radial-gradient(circle at center, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
-    z-index: -1;
-    filter: blur(20px);
-    opacity: 0;
-    animation: fadeInGlow 2s ease-out 1.2s forwards;
-}
-
-@keyframes cardEntrance {
-    to { transform: rotateX(0) translateY(0); opacity: 1; }
-}
-
-@keyframes photoZoom {
-    to { transform: scale(1); }
-}
-
-@keyframes shineSweep {
-    0% { transform: translateX(-100%); }
-    20% { transform: translateX(100%); }
-    100% { transform: translateX(100%); }
+.master-splash-content.minimalist {
+    padding-bottom: 2rem;
 }
 
 .brand-letters {
@@ -98,106 +37,110 @@
 }
 
 .letter {
-    display: inline-block;
-    font-size: 3rem;
-    font-weight: 900;
-    color: white;
+    color: #ffffff;
+    font-size: 5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
     opacity: 0;
-    transform: translateY(20px) scale(0.9);
-    filter: blur(5px);
-    animation: letterEntrance 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    transform: translateY(20px);
+    filter: blur(10px);
+    animation: revealLetter 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .letter.accent {
-    color: #3b82f6;
+    color: #3b82f6; /* Premium Blue */
 }
 
 .brand-line {
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #3b82f6, white, #3b82f6, transparent);
-    margin: 1rem auto;
-    animation: expandBrandLine 1.5s cubic-bezier(0.65, 0, 0.35, 1) 0.5s forwards;
+    background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+    margin: 1.5rem auto;
+    opacity: 0.6;
+    animation: expandLine 1.5s cubic-bezier(0.65, 0, 0.35, 1) 1.5s forwards;
 }
 
 .brand-subtitle {
-    font-size: 0.8rem;
+    color: #94a3b8;
+    font-size: 0.9rem;
     font-weight: 600;
-    letter-spacing: 0.8em;
-    color: #475569;
-    opacity: 0;
-    text-align: center;
+    letter-spacing: 0.5em;
     text-transform: uppercase;
-    animation: fadeInSub 1s ease-out 2.8s forwards;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: revealSubtitle 1s ease-out 2s forwards;
+    margin: 0;
+    text-align: center;
 }
 
 .precision-loader {
     width: 240px;
-    height: 3px;
-    background: rgba(255, 255, 255, 0.03);
+    height: 2px;
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 4px;
     overflow: hidden;
     position: relative;
-    opacity: 0;
-    animation: fadeInSub 0.5s ease-out 3s forwards;
+    margin-top: 1rem;
 }
 
 .loader-fill {
-    width: 0%;
+    position: absolute;
     height: 100%;
-    background: linear-gradient(90deg, #2563eb, #60a5fa);
-    position: relative;
-    animation: fillProgress 5.5s cubic-bezier(0.1, 0, 0.1, 1) forwards;
+    width: 0;
+    background: #3b82f6;
+    box-shadow: 0 0 15px #3b82f6;
+    animation: fillLoader 5.5s cubic-bezier(0.45, 0, 0.55, 1) 0.5s forwards;
 }
 
 .loader-glow {
     position: absolute;
     right: 0;
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
     height: 100%;
-    width: 20px;
-    box-shadow: 0 0 15px #3b82f6;
+    background: linear-gradient(90deg, transparent, #ffffff, transparent);
+    opacity: 0.5;
 }
 
-@keyframes drawContour {
-    to { stroke-dashoffset: 0; }
-}
-
-@keyframes fadeInGlow {
-    to { opacity: 1; transform: scaleY(1.5); }
-}
-
-@keyframes letterEntrance {
-    to { 
-        opacity: 1; 
-        transform: translateY(0) scale(1); 
+@keyframes revealLetter {
+    to {
+        opacity: 1;
+        transform: translateY(0);
         filter: blur(0);
     }
 }
 
-@keyframes expandBrandLine {
+@keyframes expandLine {
     to { width: 100%; }
 }
 
-@keyframes fadeInSub {
-    to { opacity: 1; transform: translateY(0); }
+@keyframes revealSubtitle {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-@keyframes fillProgress {
+@keyframes fillLoader {
     to { width: 100%; }
 }
 
-@keyframes backgroundPulse {
-    0% { transform: scale(1); opacity: 0.3; }
-    100% { transform: scale(1.1); opacity: 0.6; }
+@keyframes pulseGlow {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.1); }
 }
 
-@keyframes masterFadeOut {
-    to { opacity: 0; transform: scale(1.05); filter: blur(10px); visibility: hidden; }
+@keyframes flashIn {
+    0% { opacity: 0; transform: scale(1.1); }
+    10% { opacity: 1; transform: scale(1); }
+    90% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.95); }
 }
 
-@media (max-width: 640px) {
-    .letter { font-size: 2rem; }
-    .automotive-logo-wrapper { width: 220px; height: 100px; }
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .letter { font-size: 3rem; }
+    .brand-subtitle { font-size: 0.7rem; letter-spacing: 0.3em; }
     .precision-loader { width: 180px; }
 }

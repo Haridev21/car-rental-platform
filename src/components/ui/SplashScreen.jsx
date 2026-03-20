@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import './SplashScreen.css';
-import porscheImg from '../../assets/porsche-splash.png';
 
 const SplashScreen = () => {
     const [isVisible, setIsVisible] = useState(true);
@@ -8,7 +7,7 @@ const SplashScreen = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsVisible(false);
-        }, 6200);
+        }, 6000); // 6 seconds
         return () => clearTimeout(timer);
     }, []);
 
@@ -19,26 +18,14 @@ const SplashScreen = () => {
     return (
         <div className="master-splash-container">
             <div className="master-splash-overlay"></div>
-            <div className="master-splash-content photo-mode">
-                <div className="porsche-hero-wrapper">
-                    <div className="glass-card">
-                        <img 
-                            src={porscheImg} 
-                            alt="Porsche 911 Carrera" 
-                            className="porsche-photo"
-                        />
-                        <div className="card-shine"></div>
-                    </div>
-                    <div className="hero-glow"></div>
-                </div>
-                
+            <div className="master-splash-content minimalist">
                 <div className="staggered-text-wrapper">
                     <div className="brand-letters">
                         {brandName.split("").map((letter, index) => (
                             <span 
                                 key={index} 
                                 className={`letter ${index > 4 ? 'accent' : ''}`}
-                                style={{ animationDelay: `${2.2 + (index * 0.1)}s` }}
+                                style={{ animationDelay: `${0.5 + (index * 0.1)}s` }}
                             >
                                 {letter}
                             </span>
