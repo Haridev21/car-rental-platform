@@ -19,27 +19,35 @@ const SplashScreen = () => {
         <div className="master-splash-container">
             <div className="master-splash-overlay"></div>
             <div className="master-splash-content">
-                <div className="automotive-logo-wrapper full-car">
+                <div className="automotive-logo-wrapper high-fidelity">
                     <svg className="car-silhouette-svg" viewBox="0 0 200 80">
-                        {/* More Detailed Full Car Path */}
-                        <g className="full-car-group" fill="none" stroke="currentColor" strokeWidth="1.2">
-                            {/* Main Body */}
+                        <defs>
+                            <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stopColor="#1e3a8a" />
+                                <stop offset="50%" stopColor="#3b82f6" />
+                                <stop offset="100%" stopColor="#1e3a8a" />
+                            </linearGradient>
+                        </defs>
+                        <g className="full-car-group" fill="none" stroke="url(#line-gradient)" strokeWidth="1">
+                            {/* Detailed Body Contour */}
                             <path 
-                                className="car-line car-main-body" 
-                                d="M20,60 L25,58 C35,58 45,45 60,40 C80,33 110,33 135,42 C150,47 165,58 185,60 L195,62 L195,68 L185,72 L160,72 M40,72 L15,72 L10,68 L10,60" 
+                                className="car-line body-outline" 
+                                d="M15,55 C15,55 25,54 30,52 C35,50 45,35 65,32 C85,29 120,29 145,38 C160,43 175,54 185,55 L195,57 L195,65 L185,69 C185,69 170,70 160,70 M40,70 L15,70 L10,65 L10,55" 
                             />
-                            {/* Windows & Roof line */}
-                            <path className="car-line car-window" d="M60,40 Q100,34 135,42 L130,48 Q100,42 63,48 Z" opacity="0.7" />
-                            {/* Front Wheel */}
-                            <circle className="car-line car-wheel" cx="50" cy="68" r="10" />
-                            <circle className="car-line car-wheel-inner" cx="50" cy="68" r="6" opacity="0.5" />
-                            {/* Back Wheel */}
-                            <circle className="car-line car-wheel" cx="150" cy="68" r="10" />
-                            <circle className="car-line car-wheel-inner" cx="150" cy="68" r="6" opacity="0.5" />
-                            {/* Door details */}
-                            <path className="car-line car-door" d="M95,43 L95,72 M63,48 L130,48" strokeWidth="0.8" opacity="0.4" />
-                            {/* Headlight/Bumper detail */}
-                            <path className="car-line car-light" d="M190,62 L195,63" strokeWidth="2" stroke="#3b82f6" />
+                            {/* Cabin / Windows */}
+                            <path className="car-line window-outline" d="M65,32 Q100,28 140,36 L135,45 Q100,40 68,45 Z" />
+                            {/* Wheels with spokes animation */}
+                            <g className="wheel-group">
+                                <circle className="car-line wheel-rim" cx="50" cy="65" r="9" />
+                                <path className="car-line wheel-spokes" d="M50,56 L50,74 M41,65 L59,65" opacity="0.4" />
+                            </g>
+                            <g className="wheel-group">
+                                <circle className="car-line wheel-rim" cx="150" cy="65" r="9" />
+                                <path className="car-line wheel-spokes" d="M150,56 L150,74 M141,65 L159,65" opacity="0.4" />
+                            </g>
+                            {/* Front/Rear detailed lines */}
+                            <path className="car-line detail-line" d="M10,60 L25,60 M185,60 L195,60" stroke="#3b82f6" strokeWidth="1.5" />
+                            <path className="car-line door-line" d="M95,38 L95,70 M68,45 L135,45" opacity="0.3" />
                         </g>
                     </svg>
                     <div className="car-shadow-glow"></div>
@@ -51,7 +59,7 @@ const SplashScreen = () => {
                             <span 
                                 key={index} 
                                 className={`letter ${index > 4 ? 'accent' : ''}`}
-                                style={{ animationDelay: `${1.5 + (index * 0.1)}s` }}
+                                style={{ animationDelay: `${1.8 + (index * 0.1)}s` }}
                             >
                                 {letter}
                             </span>

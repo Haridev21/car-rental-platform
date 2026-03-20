@@ -40,32 +40,32 @@
 }
 
 .car-line {
-    stroke-dasharray: 600;
-    stroke-dashoffset: 600;
-    animation: drawContour 2.5s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+    stroke-dasharray: 800;
+    stroke-dashoffset: 800;
+    animation: drawContour 3.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-.car-main-body {
-    animation-duration: 3s;
+.body-outline {
+    stroke-width: 1.5;
 }
 
-.car-wheel, .car-wheel-inner {
+.window-outline, .detail-line {
+    animation-delay: 1.5s;
+}
+
+.wheel-rim, .wheel-spokes {
     stroke-dasharray: 100;
     stroke-dashoffset: 100;
-    animation: drawContour 1.5s ease-out 1.5s forwards;
-}
-
-.car-window, .car-door, .car-light {
-    animation-delay: 2s;
+    animation: drawContour 2s ease-out 1s forwards;
 }
 
 .car-shadow-glow {
     position: absolute;
-    bottom: 5%;
-    left: 15%;
-    right: 15%;
-    height: 3px;
-    background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.4) 0%, transparent 80%);
+    bottom: 0;
+    left: 20%;
+    right: 20%;
+    height: 4px;
+    background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.5) 0%, transparent 80%);
     filter: blur(5px);
     opacity: 0;
     animation: fadeInGlow 1.5s ease-out 2s forwards;
