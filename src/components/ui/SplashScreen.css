@@ -74,6 +74,7 @@
 .brand-letters {
     display: flex;
     gap: 0.1em;
+    justify-content: center;
 }
 
 .letter {
@@ -105,6 +106,7 @@
     letter-spacing: 0.8em;
     color: #475569;
     opacity: 0;
+    text-align: center;
     text-transform: uppercase;
     animation: fadeInSub 1s ease-out 2.8s forwards;
 }
