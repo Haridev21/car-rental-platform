@@ -129,6 +129,54 @@ export function Navbar() {
                     </div>
                 </div>
             </nav>
+
+            {/* Mobile Menu Dropdown */}
+            {isMobileMenuOpen && (
+                <div className="lg:hidden absolute top-full left-0 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-2xl overflow-y-auto max-h-[calc(100vh-80px)]">
+                    <div className="container-custom py-4 flex flex-col gap-2">
+                        {navLinks.map(link => (
+                            <Link
+                                key={link.to}
+                                to={link.to}
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                className={`px-4 py-3 text-base font-bold rounded-xl transition-all ${
+                                    isActiveLink(link.to)
+                                        ? 'text-primary-600 bg-primary-50 dark:bg-primary-900/30'
+                                        : 'text-slate-600 dark:text-slate-300 hover:text-primary-600 hover:bg-slate-100 dark:hover:bg-slate-800'
+                                }`}
+                            >
+                                {link.label}
+                            </Link>
+                        ))}
+                        
+                        <hr className="my-2 border-slate-100 dark:border-slate-800" />
+                        
+                        {isAuthenticated ? (
+                            <>
+                                {isAdmin && (
+                                    <Link to="/admin/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-base font-bold text-purple-600 rounded-xl bg-purple-50 dark:bg-purple-900/20">
+                                        💎 Admin Console
+                                    </Link>
+                                )}
+                                {isSeller && (
+                                    <Link to="/seller/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-base font-bold text-blue-600 rounded-xl bg-blue-50 dark:bg-blue-900/20">
+                                        📊 Seller Dashboard
+                                    </Link>
+                                )}
+                                <Link to="/profile" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-base font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl">My Profile</Link>
+                                <Link to="/bookings" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-base font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl">My Bookings</Link>
+                                <button onClick={() => { logout(); setIsMobileMenuOpen(false) }} className="w-full text-left px-4 py-3 text-base font-bold text-red-600 bg-red-50 dark:bg-red-900/20 rounded-xl mt-2">
+                                    Log Out
+                                </button>
+                            </>
+                        ) : (
+                            <button onClick={() => { openLoginModal(); setIsMobileMenuOpen(false) }} className="w-full btn-primary py-3 mt-2">
+                                Sign In
+                            </button>
+                        )}
+                    </div>
+                </div>
+            )}
         </header>
     )
 }
