@@ -13,32 +13,55 @@ const SplashScreen = () => {
 
     if (!isVisible) return null;
 
+    const brandName = "DRIVEEASE";
+
     return (
-        <div className="minimal-splash-container">
-            <div className="minimal-splash-content">
-                <div className="logo-animation-wrapper">
-                    <svg className="splash-logo-svg" viewBox="0 0 100 100">
+        <div className="master-splash-container">
+            <div className="master-splash-overlay"></div>
+            <div className="master-splash-content">
+                <div className="automotive-logo-wrapper">
+                    <svg className="car-silhouette-svg" viewBox="0 0 200 80">
+                        {/* High-end Car Silhouette Path */}
                         <path 
-                            className="logo-path" 
-                            d="M20,30 L80,30 L80,70 L20,70 Z M35,40 L65,40 M35,50 L65,50 M35,60 L55,60" 
+                            className="car-contour" 
+                            d="M10,60 L25,58 C35,58 45,45 60,40 C80,33 110,33 135,42 C150,47 165,58 185,60 L190,62 M10,60 Q5,60 5,55 L5,50 Q40,48 45,40 M160,45 Q175,45 185,55" 
                             fill="none" 
                             stroke="currentColor" 
-                            strokeWidth="3"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                        />
+                        <path 
+                            className="car-detail" 
+                            d="M60,40 L130,40 M85,34 L110,34" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            strokeWidth="0.8"
+                            opacity="0.6"
                         />
                     </svg>
-                    <div className="logo-pulse"></div>
+                    <div className="car-shadow-glow"></div>
                 </div>
                 
-                <div className="text-reveal-wrapper">
-                    <h1 className="reveal-title">
-                        DRIVE<span className="accent">EASE</span>
-                    </h1>
-                    <div className="reveal-line"></div>
-                    <p className="reveal-subtitle">PREMIUM MOBILITY</p>
+                <div className="staggered-text-wrapper">
+                    <div className="brand-letters">
+                        {brandName.split("").map((letter, index) => (
+                            <span 
+                                key={index} 
+                                className={`letter ${index > 4 ? 'accent' : ''}`}
+                                style={{ animationDelay: `${1.5 + (index * 0.1)}s` }}
+                            >
+                                {letter}
+                            </span>
+                        ))}
+                    </div>
+                    <div className="brand-line"></div>
+                    <p className="brand-subtitle">EXECUTIVE CAR RENTAL</p>
                 </div>
 
-                <div className="minimal-loader">
-                    <div className="loader-progress"></div>
+                <div className="precision-loader">
+                    <div className="loader-fill">
+                        <div className="loader-glow"></div>
+                    </div>
                 </div>
             </div>
         </div>
