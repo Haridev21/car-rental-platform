@@ -51,7 +51,14 @@ export default function LocationsPage() {
                                 </div>
                                 <div className="flex gap-4">
                                     <Link to="/cars" className="flex-1 text-center btn-primary py-3 rounded-xl text-sm font-bold shadow-none">Browse Cars</Link>
-                                    <button className="flex-1 btn-outline py-3 rounded-xl text-sm font-bold">Directions</button>
+                                    <a
+                                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(loc.address)}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex-1 text-center btn-outline py-3 rounded-xl text-sm font-bold"
+                                >
+                                    Directions
+                                </a>
                                 </div>
                             </div>
                         ))}

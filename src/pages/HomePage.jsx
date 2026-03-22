@@ -14,6 +14,7 @@ export default function HomePage() {
         returnDate: ''
     })
     const navigate = useNavigate()
+    const today = new Date().toISOString().split('T')[0]
 
     useEffect(() => {
         const fetchData = async () => {
@@ -84,7 +85,8 @@ export default function HomePage() {
                                         type="date"
                                         className="w-full bg-slate-50 dark:bg-slate-700 border-none rounded-xl px-4 pr-10 py-3 focus:ring-2 focus:ring-primary-500 min-w-[150px]"
                                         value={searchParams.pickupDate}
-                                        onChange={(e) => setSearchParams({ ...searchParams, pickupDate: e.target.value })}
+                                        min={today}
+                                        onChange={(e) => setSearchParams({ ...searchParams, pickupDate: e.target.value, returnDate: '' })}
                                     />
                                 </div>
                                 <div>
@@ -93,6 +95,7 @@ export default function HomePage() {
                                         type="date"
                                         className="w-full bg-slate-50 dark:bg-slate-700 border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary-500"
                                         value={searchParams.returnDate}
+                                        min={searchParams.pickupDate || today}
                                         onChange={(e) => setSearchParams({ ...searchParams, returnDate: e.target.value })}
                                     />
                                 </div>

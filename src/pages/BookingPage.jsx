@@ -13,7 +13,8 @@ import { useAuth } from '../context/AuthContext'
 export default function BookingPage() {
     const { carId } = useParams()
     const navigate = useNavigate()
-    const { success: showToast } = useToast()
+    const { success: showToast, error: showError } = useToast()
+    const today = new Date().toISOString().split('T')[0]
     const { user, isAuthenticated, openLoginModal } = useAuth()
 
     const [car, setCar] = useState(null)
@@ -78,6 +79,16 @@ export default function BookingPage() {
     ) : { total: 0, days: 0, basePrice: 0, extrasTotal: 0, taxes: 0 }
 
     const handleNext = () => {
+        if (currentStep === 1) {
+            if (bookingData.pickupDate < today) {
+                showError('Pickup date cannot be in the past.')
+                return
+            }
+            if (bookingData.returnDate < bookingData.pickupDate) {
+                showError('Return date must be on or after the pickup date.')
+                return
+            }
+        }
         if (!isAuthenticated && currentStep === 2) {
             openLoginModal()
             return
@@ -155,7 +166,8 @@ export default function BookingPage() {
                                                 type="date"
                                                 label="Pickup Date"
                                                 value={bookingData.pickupDate}
-                                                onChange={(e) => setBookingData({ ...bookingData, pickupDate: e.target.value })}
+                                                min={today}
+                                                onChange={(e) => setBookingData({ ...bookingData, pickupDate: e.target.value, returnDate: '' })}
                                             />
                                         </div>
                                         <div className="space-y-6">
@@ -169,6 +181,7 @@ export default function BookingPage() {
                                                 type="date"
                                                 label="Return Date"
                                                 value={bookingData.returnDate}
+                                                min={bookingData.pickupDate || today}
                                                 onChange={(e) => setBookingData({ ...bookingData, returnDate: e.target.value })}
                                             />
                                         </div>
